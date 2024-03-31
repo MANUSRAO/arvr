@@ -1,24 +1,24 @@
 using System.Collections;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-public class LevelLoader : MonoBehaviour
-{
-    public GameObject loadingScreen;
-    public Slider slider;
-    public TextMeshProUGUI progressText;
-    public void LoadLevel (int sceneIndex){
-        StartCoroutine(LoadAsync(sceneIndex));
-    }    
+public class levelloader : MonoBehaviour
+{   
+    public GameObject loadingPanel;
+    public Slider loadingBar;
+    public TextMeshPro progressText;
+    public void loadLevel(int sceneIndex){
+        StartCoroutine(LoadLevelAsync(sceneIndex));
+    }
 
-    IEnumerator LoadAsync (int sceneIndex){
+    IEnumerator LoadLevelAsync(int sceneIndex) {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        loadingScreen.SetActive(true);
+        loadingPanel.SetActive(true);
         while(!operation.isDone){
-            float progress = Mathf.Clamp01(operation.progress/.9f);
-            slider.value = progress;
-            progressText.text = progress * 100f +"%";
+            float progress = Mathf.Clamp01(operation.progress/0.9f);
+            progressText.text = progress * 100f + "%";
+            loadingBar.value = progress;
+            Debug.Log(progress);
             yield return null;
         }
     }
