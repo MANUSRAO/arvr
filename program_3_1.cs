@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bounce : MonoBehaviour
+public class spherescript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float force =600f;
+    public PhysicMaterial physic;
+    public float levelTime = 10f;
+    private float startTime = 0f;
     void Start()
     {
-       // GetComponent<Rigidbody2D>().AddForce(new Vector2(20f,10f) * force* Time.deltaTime);
-       GetComponent<Rigidbody>().velocity=new Vector3(0,5,0);
+        physic.bounciness = 0.5f;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0,5,0);
     }
 
+    void Update(){
+        startTime += Time.deltaTime;
+        if(startTime>levelTime)
+            physic.bounciness = 1.0f;
+    }
 }
